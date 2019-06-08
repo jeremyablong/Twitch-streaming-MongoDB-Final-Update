@@ -1,0 +1,47 @@
+.jumbotron {
+	height: 100vh;
+	background-image: url("../../images/image-1.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.jumbo_inner {
+	background: black;
+	color: white;
+	padding: 30px 40px;
+	border-radius: 25px;
+}
+.display-4 {
+	font-weight: bold;
+	text-align: left;
+}
+.lead {
+	font-weight: bold;
+}
+.fa-google-plus-g {
+	margin-top: 10px;
+}
+.google_signin_button_two {
+	font-weight: bold;
+	background: aquamarine !important;
+}
+#to_google_link button {
+	color: white;
+}
+.navbar-brand {
+	font-weight: bold;
+}
+#login_verfication {
+	padding-right: 30px;
+	color: white;
+	font-weight: bold;
+}
+#nav_toggler {
+	padding: 14px 20px;
+	border: 3px solid black;
+	box-shadow: 8px 8px 8px grey;
+	color: black;
+}
+.nav {
+	border-bottom: 3px solid black;
+	padding-bottom: 18px;
+}

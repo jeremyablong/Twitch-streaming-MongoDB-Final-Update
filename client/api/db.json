@@ -1,0 +1,40 @@
+{
+  "streams": [
+    {
+      "title": "The mastermind of the dogs",
+      "description": "Episode 1",
+      "userId": "106048965191802058926",
+      "id": 1
+    },
+    {
+      "title": "The mastermind of the cats",
+      "description": "Part 1",
+      "userId": "106048965191802058926",
+      "id": 2
+    },
+    {
+      "title": "We are the spartans",
+      "description": "capital raises",
+      "userId": "106048965191802058926",
+      "id": 3
+    },
+    {
+      "title": "100 men and 100 women",
+      "description": "the war of ages",
+      "userId": "106048965191802058926",
+      "id": 4
+    },
+    {
+      "title": "I'm typing a bunch of random stuff",
+      "description": "Here is some more random stuff",
+      "userId": "106048965191802058926",
+      "id": 5
+    },
+    {
+      "title": "I want another stream",
+      "description": "6th stream",
+      "userId": "111913248703275399147",
+      "id": 7
+    }
+  ]
+}

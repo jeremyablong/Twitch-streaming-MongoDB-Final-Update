@@ -1,0 +1,15 @@
+.pay_with_card {
+	float: left;
+	margin-right: 30px;
+	margin-top: 14px;
+}
+.payment_button {
+	padding: 16px 20px;
+	margin-top: -12px;
+	float: left;
+}
+/*@media only screen and (max-width: 700px) {
+	.pay_with_card {
+		display: none;
+	}
+}*/

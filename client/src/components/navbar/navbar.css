@@ -1,0 +1,51 @@
+.fa-google-plus-g {
+	margin-top: 10px;
+}
+.google_signin_button {
+	font-weight: bold;
+}
+#to_google_link button {
+	color: darkblue !important;
+}
+.navbar-brand {
+	font-weight: bold;
+}
+#login_verfication {
+	padding-right: 30px;
+	color: darkblue;
+	font-weight: bold;
+}
+#nav_toggler {
+	padding: 14px 20px;
+	border: 3px solid black;
+	box-shadow: 8px 8px 8px grey;
+	color: black;
+}
+.nav {
+	border-bottom: 3px solid black;
+	padding-bottom: 18px;
+}
+@media only screen and (max-width: 700px) {
+	.payments {
+		display: none;
+	}
+	.hide {
+		display: none;
+	}
+	.avaliable_desktop {
+		display: none;
+	}
+}
+@media only screen and (min-width: 700px) {
+	.avaliable_mobile {
+		display: none;
+	}
+}
+
+#signin_google_btn {
+	float: right;
+}
+.avaliable_credits_span {
+	padding-right: 15px;
+	color: red;
+}

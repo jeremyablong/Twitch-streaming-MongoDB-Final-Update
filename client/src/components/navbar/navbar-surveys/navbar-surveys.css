@@ -1,0 +1,24 @@
+#nav_toggler {
+	padding: 14px 20px;
+	border: 3px solid black;
+	box-shadow: 8px 8px 8px grey;
+	color: black;
+}
+.nav_nav {
+	border-bottom: 3px solid black;
+}
+@media only screen and (max-width: 700px) {
+	.mobile_disappear {
+		display: none;
+	}
+	.hide {
+		display: none;
+	}
+	.avaliable_desktop {
+		display: none;
+	}
+}
+.avaliable_credits_span {
+	padding-right: 15px;
+	color: red;
+}

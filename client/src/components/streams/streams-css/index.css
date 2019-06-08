@@ -1,0 +1,13 @@
+.outline_box {
+	border: 3px solid black;
+	margin: 30px;
+	padding: 24px 15px;
+	float: left;
+}
+.stream_header {
+	color: black;
+	font-weight: bold;
+}
+.long_button {
+	margin: 30px 30px;
+}

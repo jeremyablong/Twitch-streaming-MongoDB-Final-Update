@@ -1,0 +1,16 @@
+.bottom_right {
+	right: 0;
+	bottom: 0;
+	position: absolute;
+	margin: 0px 40px 40px 0px;
+}
+.survey_list_container {
+	background-image: url("../../../../images/coming-soon.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 100vh;
+}
+h1 {
+	color: white;
+	padding-top: 40px;
+}
