@@ -26,6 +26,9 @@ const app = express();
 var util = require('util');
 // require cors
 const cors = require("cors");
+// use cors
+app.use(cors());
+app.options('*', cors());
 // require model user configurations and collection
 require("./models/user.js");
 // model survey
@@ -48,9 +51,6 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({
    extended: false
 }));
-// use cors
-app.use(cors());
-app.options('*', cors());
 
 const submitFormRoute = require("./routes/submitForm.js")(app);
 
@@ -85,7 +85,6 @@ if (process.env.NODE_ENV === "production") {
 	// Express will serve up production files
 	app.use(express.static("client/build"));
 	// serve up index.html file if it doenst recognize the route
-	const path = require("path");
 	app.get("*", (req, res) => {
 		res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 	})
