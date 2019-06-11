@@ -1,8 +1,69 @@
 .outline_box {
 	border: 3px solid black;
-	margin: 30px;
+	margin: 20px;
 	padding: 24px 15px;
-	float: left;
+	float: left !important;
+	box-shadow: 10px 10px 10px 10px grey;
+	width: 18rem;
+	display: inline-block;
+	white-space: nowrap;
+}
+#title {
+	font-size: 1.3rem;
+}
+.cont_buttons {
+	position: relative;
+}
+
+.card_image {
+	width: 100%;
+	min-width: 100%;
+	height: 100%;
+	min-height: 100%;
+}
+#title {
+	padding-top: 30px;
+}
+.container_card {
+	height: 100%;
+	min-height: 100%;
+}
+@media only screen and (max-width: 600px) {
+	.outline_box {
+		border: 3px solid black;
+		margin: 30px;
+		padding: 24px 15px;
+		float: left;
+		box-shadow: 10px 10px 10px 10px grey;
+		width: 90%;
+		min-height: 400px;
+		height: 400px;
+	}
+	.card_image {
+		width: 100%;
+		min-width: 100%;
+		height: 60%;
+		min-height: 60%;
+	}
+}
+@media only screen and (max-width: 900px) {
+	.outline_box {
+		border: 3px solid black;
+		margin: 30px;
+		padding: 50px 15px;
+		float: left;
+		box-shadow: 10px 10px 10px 10px grey;
+		width: 90%;
+		min-height: 400px;
+		height: 400px;
+	}
+
+}
+@media only screen and (min-width: 901) and (max-width: 1350px) {
+	.sub_buttons {
+		position: absolute;
+		bottom: -50px;
+	}
 }
 .stream_header {
 	color: black;
@@ -10,4 +71,13 @@
 }
 .long_button {
 	margin: 30px 30px;
+}
+
+.video_tag {
+	margin-top: 20px;
+	width: 100%;
+}
+
+.live_stream_title {
+	color: darkred;
 }

@@ -8,7 +8,9 @@ import {
 	FETCH_STREAMS, 
 	FETCH_STREAM, 
 	DELETE_STREAM, 
-	EDIT_STREAM } from "../actions/types.js";
+	EDIT_STREAM,
+	STREAM_DESCRIPTION } from "../actions/types.js";
+	
 import history from "../history.js";
 
 export const changeLogin = (shouldBeLoggedIn) => {
@@ -58,7 +60,16 @@ export const signOut = (dispatch) => {
 	dispatch({ type: "SIGN_OUT", isSignedIn: false })
 
 }
+export const streamInformation = (info) => async dispatch => {
 
+	dispatch({ type: "STREAM_TITLE", payload: info })
+
+}
+export const streamInfoDescription = (info) => async dispatch => {
+
+	dispatch({ type: "STREAM_DESCRIPTION", payload: info })
+
+}
 export const createStream = formValues => async (dispatch, getState) => {
 	const { userId } = getState().auth;
 		const response = await streams.post("/streams", { ...formValues, userId });
@@ -75,6 +86,7 @@ export const fetchStreams = () => async dispatch => {
 	})
 };
 export const fetchStream = (id) => async dispatch => {
+
 	const response = await streams.get(`/streams/${id}`);
 
 	dispatch({

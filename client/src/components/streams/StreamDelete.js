@@ -4,6 +4,11 @@ import { fetchStream, deleteStream } from "../../actions/index.js";
 import Modal from 'react-modal';
 import history from "../../history.js";
 import { Link } from "react-router-dom";
+import store from "../../store/store.js";
+import {
+	DOCUMENT_ID
+} from "../../actions/types.js";
+
 
 const customStyles = {
   content : {
@@ -40,9 +45,10 @@ class StreamDelete extends Component {
   }
  
 	componentDidMount () {
+
 		this.props.fetchStream(this.props.match.params.id);
 	}
-
+	
 
 	render() {
 		const id = this.props.match.params.id;
@@ -74,8 +80,9 @@ class StreamDelete extends Component {
 				        <Link to="/">
 				        	<button type="button" className="btn btn-primary" data-dismiss="modal" onClick={this.closeModal}>CANCEL</button>
 				        </Link>
-
+					<Link to="/">
 				        <button type="button" className="btn btn-danger" onClick={() => this.props.deleteStream(id)}>DELETE THIS STREAM</button>
+				     </Link>
 				      </div>
 				    </div>
 				  </div>

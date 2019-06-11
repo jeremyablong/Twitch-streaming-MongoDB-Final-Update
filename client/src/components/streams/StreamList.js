@@ -6,55 +6,63 @@ import flv from "flv.js";
 // import NavbarHome from "../navbar/navbar.js";
 import axios from "axios";
 import "./streams-css/index.css";
+import store from "../../store/store.js";
+import {
+	STREAM_TITLE,
+	STREAM_DESCRIPTION
+} from "../../actions/types.js";
+import { matchPath } from "react-router-dom";
 
-const style = {
-	width: "100%",
-	maxWidth: "100%",
-	height: "100%",
-	maxHeight: "100%"
-}
 
 class StreamList extends Component {
 constructor (props) {
 	super(props);
 
 	this.state = {
-		streams: []
+		streams: [],
+		id: null
 	}
 
+	console.log(this.props)
 	this.videoRef = React.createRef();
 }
 	componentDidMount () {
+
 		this.props.fetchStreams();
-
+		console.log(this.props.match.params)
 		const { id } = this.props.match.params;
-
-		this.props.fetchStream(id);
 
 		this.buildPlayer();
 
 		axios.get("/streams").then((res) => {
 			let obj = res.data;
 			
-			this.setState({
-				streams: obj
-			}, () => {
-				console.log(this.state.streams)
-			})
+			for (let i in obj) {
+				this.setState({
+					streams: obj,
+				// 	id: obj[i]._id
+				// }, () => {
+				// 	console.log(this.state);
+				});
+			}
 		})
+		// this.props.fetchStream(this.state.id);
 	};
 	componentDidUpdate () {
 		this.buildPlayer();
 	}
 	renderAdmin = (stream) => {
+		// store.dispatch({ type: "STREAM_TITLE", payload: stream.title })
 		if (stream.googleID === this.props.isSignedIn.googleID) {
 			return ( 
-
-				<div>
-				<Link to={`/streams/edit/${stream._id}`}>
-					<button className="btn btn-primary"> EDIT </button> 
-				</Link>
-				<Link to={`/streams/delete/${stream._id}`}> <button className="btn btn-danger"> DELETE </button></Link>
+		
+				<div className="cont_buttons">
+					<div className="sub_buttons">
+					<Link to={`/streams/edit/${stream._id}`}>
+						<button className="btn btn-primary"> EDIT </button> 
+					</Link>
+					<Link to={`/streams/delete/${stream._id}`}> <button className="btn btn-danger"> DELETE </button></Link>
+					</div>
 				</div> 
 
 			);
@@ -64,10 +72,9 @@ constructor (props) {
 		if (this.player || !this.props.stream) {
 			return;
 		}
-
+		
 		const { id } = this.props.match.params;
-
-			
+		
 		///////////// MAY NEED TO ADJUST LOCAL HOST BELOW ////////////
 		///////////// MAY NEED TO ADJUST LOCAL HOST BELOW ///////////
 		///////////// MAY NEED TO ADJUST LOCAL HOST BELOW ////////////
@@ -80,19 +87,23 @@ constructor (props) {
 		});
 		// this.flvPlayer.attachMediaElement(this.videoRef.current);
 		// this.flvPlayer.load();
-	}
+	};
+
 	renderList = () => {
+		console.log(this.state);
 		return this.state.streams.map((stream, index) => {
 				return (
 					<div className="container_card" key={index}>
-						<div style={{ width: "18rem" }} className="outline_box">
-							<img style={style} src={require("../../liveStream.jpg")} id="card_images" />
+						<div className="card outline_box col-lg-2 col-md-4 col-12">
+							<img className="card_image" src={require("../../liveStream.jpg")} id="card_images" />
 							<div className="row">
 							<div className="col-md-12">
 								<Link to={`/streams/show/${stream._id}`}>
-									<h3 className="stream_title"> {stream.title} </h3>
+									<h3 onClick={() => {
+										return store.dispatch({ type: STREAM_TITLE, payload: stream.title }), store.dispatch({ type: STREAM_DESCRIPTION, payload: stream.description })
+									}} id="title" className="stream_title"> {stream.title.length > 16 ? stream.title.substring(0, 16) + "..." : stream.title} </h3>
 								</Link>
-								<h6 className="sub_title_two"> {stream.description } </h6>
+								<h6 className="sub_title_two"> {stream.description.length > 30 ? stream.description.substring(0, 30) + "..." : stream.description } </h6>
 							</div>
 							</div>
 							<div className="col-md-12">
@@ -103,7 +114,7 @@ constructor (props) {
 
 			);
 		})
-	}
+	};
 
 	renderCreate = () => {
 		if (this.props.isSignedIn) {
@@ -115,7 +126,7 @@ constructor (props) {
 				</div>
 			);
 		}
-	}
+	};
 	render () {
 		// if (this.props.stream) {
 		// 	return <h1 className="text-center loading"> Loading... </h1>
@@ -142,7 +153,9 @@ const mapStateToProps = (state, ownProps) => {
 		streams: [state.streams.streams],
 		currentUserId: state.auth.userId,
 		isSignedIn: state.auth,
-		stream: state.streams[ownProps.match.params.id] 
+		stream: state.streams[ownProps.match.params.id],
+		ID: state.streams.streams
+
 	}
 }
 export default connect(mapStateToProps, { fetchStreams, fetchStream })(StreamList);

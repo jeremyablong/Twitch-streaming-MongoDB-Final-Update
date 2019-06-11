@@ -24,6 +24,8 @@ const db = mongoose.connection;
 const app = express();
 // util
 var util = require('util');
+// require cors
+const cors = require("cors");
 // require model user configurations and collection
 require("./models/user.js");
 // model survey
@@ -46,6 +48,9 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({
    extended: false
 }));
+// use cors
+app.use(cors());
+app.options('*', cors());
 
 const submitFormRoute = require("./routes/submitForm.js")(app);
 
@@ -126,16 +131,10 @@ MongoClient.connect(keys.olderMongoURI, { useNewUrlParser: true }, function (err
 			})
 		})
 	})
-    app.delete("/streams/:id", (req, res) => {
-		db.collection("streamCollectionName", (err, collection) => {
-			collection.findByIdAndRemove({_id: req.params.id}, (err,todo) =>{
-		        if(err) res.json(err);
-		        else res.json('Todo successfully removed');
-		    });
-		})
-	})
 	}
 	app.listen(port, () => {
 		console.log(`Server is running at port ${port}`);
 	}); 	
 });
+
+
