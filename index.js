@@ -66,7 +66,7 @@ mongoose.connect(keys.olderMongoURI, {
 	console.log("NOT connected to the database", error);
 });
 
-app.get("/", () => {
+app.get("/", (req, res) => {
 	res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
 
