@@ -28,6 +28,7 @@ var util = require('util');
 const cors = require("cors");
 // use cors
 app.use(cors());
+// cors options
 app.options('*', cors());
 // require model user configurations and collection
 require("./models/user.js");
@@ -39,15 +40,11 @@ require("./services/passport.js");
 require("./models/streamInfo.js");
 
 const streamModel = require("./models/streamInfo.js");
-// view engine
-app.set('view engine', 'html');
 // body parser
 app.use(bodyParser.json());
 // form routes
 require("./routes/submitForm.js")(app);
-// static serve
-app.use(express.static(__dirname + '/public'));
-
+// body parser
 app.use(bodyParser.urlencoded({
    extended: false
 }));
@@ -56,9 +53,10 @@ const submitFormRoute = require("./routes/submitForm.js")(app);
 
 // development link
 const development = "http://localhost:3000";
-
+// production 
+const production = "https://limitless-lowlands-82717.herokuapp.com/";
 // connect mongoDB to mongoose
-mongoose.connect(keys.mongoURI, {
+mongoose.connect(keys.olderMongoURI, {
 	useNewUrlParser: true
 }).then(() => {
 	console.log("Connected to database");
@@ -91,7 +89,6 @@ if (process.env.NODE_ENV === "production") {
 } 
 
 MongoClient.connect(keys.olderMongoURI, { useNewUrlParser: true }, function (err, db) {
-	let dbase = db.db("streamCollection");
 	if (err) {
 		console.log(err);
 	} else {

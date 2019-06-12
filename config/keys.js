@@ -10,5 +10,5 @@ module.exports = {
 	stripeSecretKey: "sk_test_6EzSXCZ258zeJ60Bl9kvIXCG00tSxB8pT6",
 	// sendGridKey: "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",
 	// change this BEFORE deployment
-	redirectDomain: "http://localhost:3000"
+	redirectDomain: "https://limitless-lowlands-82717.herokuapp.com/"
 };
