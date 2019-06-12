@@ -66,11 +66,8 @@ mongoose.connect(keys.olderMongoURI, {
 	console.log("NOT connected to the database", error);
 });
 
-httpProxy.createProxyServer({
-    target: 'https://limitless-lowlands-82717.herokuapp.com/',
-    toProxy: true,
-    changeOrigin: true,
-    xfwd: true
+app.get("/", () => {
+	res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
 
 app.use(
