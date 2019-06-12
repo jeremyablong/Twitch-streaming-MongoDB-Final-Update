@@ -42,17 +42,7 @@ constructor (props) {
 
 		this.buildPlayer();
 		
-		axios.get("/streams", {
-			method: "GET",
-			headers: {
-				'Access-Control-Allow-Origin': 'https://rocky-cliffs-51270.herokuapp.com/',
-				'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT',
-				'Access-Control-Allow-Headers': '*',
-				'Accept': 'application/json',
-    			'Content-Type': 'application/json',
-			},
-			crossdomain: true
-		}).then((res) => {
+		axios.get("/streams").then((res) => {
 			let obj = res.data;
 			for (let i in obj) {
 				this.setState({
