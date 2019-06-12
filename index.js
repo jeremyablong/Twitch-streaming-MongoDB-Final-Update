@@ -26,6 +26,8 @@ const app = express();
 var util = require('util');
 // require cors
 const cors = require("cors");
+// require http
+const httpProxy = require("http-proxy");
 // use cors
 app.use(cors());
 // cors options
@@ -64,6 +66,12 @@ mongoose.connect(keys.olderMongoURI, {
 	console.log("NOT connected to the database", error);
 });
 
+httpProxy.createProxyServer({
+    target: 'https://limitless-lowlands-82717.herokuapp.com/',
+    toProxy: true,
+    changeOrigin: true,
+    xfwd: true
+});
 
 app.use(
 	cookieSession({
