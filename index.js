@@ -89,7 +89,6 @@ if (process.env.NODE_ENV === "production") {
 		res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 	})
 } 
-const port = process.env.PORT || 5000;
 
 MongoClient.connect(keys.olderMongoURI, { useNewUrlParser: true }, function (err, db) {
 	let dbase = db.db("streamCollection");
@@ -131,6 +130,8 @@ MongoClient.connect(keys.olderMongoURI, { useNewUrlParser: true }, function (err
 		})
 	})
 	}
+	const port = process.env.PORT || 5000;
+	
 	app.listen(port, () => {
 		console.log(`Server is running at port ${port}`);
 	}); 	
