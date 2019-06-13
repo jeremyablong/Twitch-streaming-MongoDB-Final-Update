@@ -41,8 +41,13 @@ constructor (props) {
 		this.props.fetchStream(id);
 
 		this.buildPlayer();
-		
-		axios.get("/streams").then((res) => {
+		const config = {
+		  headers: {
+		    'Content-Type': 'application/json',
+		    'accept':'application/json'
+		  },
+		};
+		axios.get("/streams", config).then((res) => {
 			let obj = res.data;
 			for (let i in obj) {
 				this.setState({
