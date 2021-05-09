@@ -27,7 +27,7 @@
     "express": "^4.17.1",
     "http-proxy": "^1.17.0",
     "localtunnel": "^1.9.1",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "mongodb": "^2.2.33",
     "mongoose": "^5.5.12",
     "node": "^12.2.0",
